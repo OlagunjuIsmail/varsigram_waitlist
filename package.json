@@ -1,0 +1,9 @@
+{
+    "name": "varsigram-waitlist",
+    "version": "1.0.0",
+    "description": "Netlify waitlist for Varsigram",
+    "dependencies": {
+      "node-fetch": "^2.6.1"
+    }
+  }
+  

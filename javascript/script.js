@@ -60,3 +60,23 @@ function typePlaceholder(element, text, delay = 100, pause = 1000) {
   // Start the continuous typing animation
   typePlaceholder(input, placeholderText, 150, 2000);  // Adjust delay and pause duration
   
+  document.getElementById("emailForm").addEventListener("submit", function (e) {
+    e.preventDefault(); 
+
+    const email = document.getElementById("email").value;
+
+    fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert(data.message);
+        } else {
+            alert(data.error);
+        }
+    })
+    .catch(error => console.error("Error:", error));
+});
